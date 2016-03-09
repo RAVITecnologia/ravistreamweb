@@ -9,7 +9,7 @@
         
         <meta charset="UTF-8">
         
-        <title>RAVI STREAM #1 - FORMULÁRIO WEB PHP & MySQL</title>
+        <title>RAVI STREAM #1 e #2 - FORMULÁRIO WEB PHP & MySQL</title>
         
         <script type="text/javascript" src="assets/fw/jquery/jquery.js"></script>
         <script type="text/javascript" src="assets/fw/bs/js/bootstrap.js"></script>
@@ -21,9 +21,9 @@
     
     <body>
         
-        <center><h1>RAVI STREAM #1 - FORMULÁRIO WEB PHP & MySQL</h1></center>
+        <center><h1>RAVI STREAM #1 e #2 - FORMULÁRIO WEB PHP & MySQL</h1></center>
         
-        <form id="formcontato" action="#" method="post">
+        <form id="formcontato" action="assets/php/db/contato.php" method="post">
             
             <div class="form-group">
                 <label>Nome</label>
@@ -85,7 +85,7 @@
             </div>
             
             <div class="form-group">
-                <label><input type="checkbox" name="newslettercontato" /> Deseja receber e-mails do site?</label>
+                <label><input type="checkbox" name="flagemailcontato" value="1" /> Deseja receber e-mails do site?</label>
             </div>
             
             <button type="submit" class="btn btn-default">Enviar</button>
