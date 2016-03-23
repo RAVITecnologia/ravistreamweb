@@ -14,6 +14,20 @@
 		
 	}
 	
+	function bannerrandomico_update($dados)
+	{
+		return mysql_query(
+		'
+		UPDATE
+			banners
+		SET
+			legendabanner = "'.$dados['legendabanner'].'"
+		
+		WHERE
+			idbanner = '.$dados['idbanner'].'
+		');
+	}
+	
 	function bannerrandomico_select()
 	{
 		$banners = array();

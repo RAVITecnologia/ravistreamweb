@@ -101,7 +101,116 @@
     
     <hr>
     
-    <h2>Envie um banner!</h2>
+    <h2>Banners Cadastrados</h2>
+    
+    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal_insert">Inserir novo banner</a>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="modal_insert" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    
+     <form id="formbanner" action="assets/php/envio_banner.php" method="post" enctype="multipart/form-data">
+     
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Inserção de Banner</h4>
+          </div>
+          <div class="modal-body" align="left">
+          
+                <input type="hidden" name="insert" value="" />
+
+                <div class="form-group">
+                    <label>Legenda</label>
+                    <input type="text" class="form-control" name="legendabanner" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Imagem do Banner</label>
+                    <input type="file" name="imagembanner" class="form-control" />
+                </div>
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            <button type="submit" class="btn btn-success">Inserir</button>
+          </div>
+        </div>
+      </div>
+      
+     </form>
+     
+    </div>
+    
+    <table class="table" style="width:800px">
+    	<thead>
+        	<th>ID</th>
+            <th>Legenda</th>
+            <th>Data de Criação</th>
+            <th></th>
+        </thead>
+        
+        <tbody>
+        	<?php
+            
+			foreach($banners as $b)
+			{
+				echo 
+				'
+				<tr>
+					<td>'.$b['idbanner'].'</td>
+					<td>'.$b['legendabanner'].'</td>
+					<td>'.$b['datacriacaobanner'].'</td>
+					<td><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#modal_'.$b['idbanner'].'">Alterar</a></td>
+				</tr>
+				
+				<!-- Modal -->
+				<div class="modal fade" id="modal_'.$b['idbanner'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				
+				 <form id="formbanner" action="assets/php/envio_banner.php" style="width:400px;" method="post" enctype="multipart/form-data">
+				 
+				  <div class="modal-dialog" role="document">
+					<div class="modal-content">
+					  <div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Alteração de Banner ID: '.$b['idbanner'].'</h4>
+					  </div>
+					  <div class="modal-body" align="left">
+					  
+					  		<input type="hidden" name="update" value="" />
+							<input type="hidden" name="idbanner" value="'.$b['idbanner'].'" />
+    	
+							<div class="form-group">
+								<label>Legenda</label>
+								<input type="text" class="form-control" name="legendabanner" value="'.$b['legendabanner'].'" />
+							</div>
+							
+							<div class="form-group">
+								<label>Imagem do Banner</label>
+								<input type="file" name="imagembanner" class="form-control" />
+							</div>
+							
+							<img src="assets/img/banners/'.$b['idbanner'].'.jpg" width="568" />
+						
+					  </div>
+					  <div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+						<button type="submit" class="btn btn-success">Alterar</button>
+					  </div>
+					</div>
+				  </div>
+				  
+				 </form>
+				 
+				</div>
+				';
+			}
+			
+			?>
+        </tbody>
+    </table>
+    
+    <!-- <h2>Envie um banner!</h2>
     
     <form id="formbanner" action="assets/php/envio_banner.php" style="width:400px;" method="post" enctype="multipart/form-data">
     	
@@ -117,7 +226,7 @@
         
         <button type="submit" class="btn btn-primary">Enviar</button>
         
-    </form>
+    </form> -->
 
 	</center>
 </body>
